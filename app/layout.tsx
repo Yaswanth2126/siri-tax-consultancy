@@ -9,7 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Siri Tax Consultancy",
   description:
-    "Professional GST, Income Tax and Business Compliance Services",
+    "Professional GST and Income Tax consultancy services",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 
         <Navbar />
 
-        <main className="pt-32">
+        <main className="pt-24">
 
           {children}
 

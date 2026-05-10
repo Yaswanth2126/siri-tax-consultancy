@@ -22,34 +22,36 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 pt-5">
+    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 pt-4">
 
       <motion.nav
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
+        transition={{ duration: 0.3 }}
         className="max-w-7xl mx-auto"
       >
 
-        <div className="bg-black/50 backdrop-blur-2xl border border-white/10 rounded-[28px] px-6 lg:px-8 h-20 flex items-center justify-between shadow-2xl shadow-black/30">
+        <div className="h-16 rounded-2xl border border-blue-500/10 bg-[#050816]/70 backdrop-blur-xl shadow-[0_0_40px_rgba(37,99,235,0.12)] flex items-center justify-between px-5 lg:px-7">
 
           {/* Logo */}
           <Link
             href="/"
-            className="text-white font-bold text-2xl tracking-tight"
+            className="text-white font-bold text-xl lg:text-2xl"
           >
+
             Siri Tax Consultancy
+
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
 
             {links.map((link) => (
 
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-300 hover:text-white transition text-sm font-medium"
+                className="text-sm text-gray-300 hover:text-blue-400 transition"
               >
 
                 {link.name}
@@ -60,16 +62,16 @@ export default function Navbar() {
 
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
+            className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
           >
 
             {menuOpen ? (
-              <X size={28} />
+              <X size={22} />
             ) : (
-              <Menu size={28} />
+              <Menu size={22} />
             )}
 
           </button>
@@ -82,37 +84,27 @@ export default function Navbar() {
           {menuOpen && (
 
             <motion.div
-              initial={{ opacity: 0, y: -12 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden mt-4 bg-black/70 backdrop-blur-2xl border border-white/10 rounded-[28px] overflow-hidden"
+              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-[#050816]/90 backdrop-blur-xl overflow-hidden"
             >
 
-              <div className="flex flex-col p-6">
+              <div className="flex flex-col p-5">
 
-                {links.map((link, index) => (
+                {links.map((link) => (
 
-                  <motion.div
+                  <Link
                     key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: index * 0.05,
-                    }}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
                   >
 
-                    <Link
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block py-4 text-gray-300 hover:text-white transition text-lg border-b border-white/5 last:border-none"
-                    >
+                    {link.name}
 
-                      {link.name}
-
-                    </Link>
-
-                  </motion.div>
+                  </Link>
 
                 ))}
 
