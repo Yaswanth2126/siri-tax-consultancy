@@ -14,7 +14,6 @@ export default function PageWrapper({
 
       <BackgroundEffects />
 
-      <Navbar />
 
       <div className="relative z-10">
 
