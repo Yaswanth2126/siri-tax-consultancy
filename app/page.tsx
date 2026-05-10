@@ -10,7 +10,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-black text-white overflow-hidden">
 
       {/* Hero Section */}
-      <section className="relative px-6 lg:px-12 pt-10 pb-24">
+      <section className="relative px-6 lg:px-12 pt-32 pb-24">
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.18),transparent_45%)]" />
 

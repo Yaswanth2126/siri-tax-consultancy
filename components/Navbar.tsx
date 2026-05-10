@@ -19,22 +19,25 @@ export default function Navbar() {
   ];
 
   return (
+
     <header className="absolute top-0 left-0 w-full z-50">
 
-      <div className="max-w-7xl mx-auto px-6 pt-6">
+      <div className="max-w-6xl mx-auto px-4 pt-4">
 
-        <div className="h-16 rounded-2xl bg-black/30 backdrop-blur-2xl border border-blue-500/10 shadow-[0_0_40px_rgba(37,99,235,0.08)] px-6 flex items-center justify-between">
+        <div className="h-14 rounded-xl bg-black/25 backdrop-blur-2xl border border-blue-500/10 shadow-[0_0_30px_rgba(37,99,235,0.08)] px-6 flex items-center justify-between">
 
           {/* Logo */}
           <Link
             href="/"
-            className="text-white font-bold text-2xl tracking-tight"
+            className="text-white font-bold text-xl tracking-tight"
           >
+
             Siri Tax Consultancy
+
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
 
             {links.map((link) => (
 
@@ -43,26 +46,28 @@ export default function Navbar() {
                 href={link.href}
                 className="text-gray-300 hover:text-blue-400 transition text-sm font-medium"
               >
+
                 {link.name}
+
               </Link>
 
             ))}
 
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center text-white"
+            className="md:hidden w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/10 flex items-center justify-center text-white"
           >
 
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
 
           </button>
 
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Dropdown */}
         <AnimatePresence>
 
           {menuOpen && (
@@ -72,10 +77,10 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-black/60 backdrop-blur-2xl overflow-hidden"
+              className="md:hidden mt-3 rounded-xl border border-blue-500/10 bg-black/70 backdrop-blur-2xl overflow-hidden"
             >
 
-              <div className="px-6 py-5 flex flex-col">
+              <div className="px-5 py-4 flex flex-col">
 
                 {links.map((link) => (
 
@@ -103,5 +108,6 @@ export default function Navbar() {
       </div>
 
     </header>
+
   );
 }
