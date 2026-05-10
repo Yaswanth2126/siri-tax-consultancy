@@ -22,11 +22,11 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-blue-500/10 bg-[#050816]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full bg-[#050816]/95 backdrop-blur-xl">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-3">
 
-        <div className="h-20 flex items-center justify-between">
+        <div className="h-16 rounded-2xl bg-gradient-to-r from-[#0a1020] to-[#121a33] border border-blue-500/10 shadow-lg shadow-blue-500/5 px-6 flex items-center justify-between">
 
           {/* Logo */}
           <Link
@@ -57,7 +57,7 @@ export default function Navbar() {
 
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center text-white"
@@ -73,45 +73,45 @@ export default function Navbar() {
 
         </div>
 
+        {/* Mobile Menu */}
+        <AnimatePresence>
+
+          {menuOpen && (
+
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-[#0a1020]/95 backdrop-blur-xl overflow-hidden"
+            >
+
+              <div className="px-6 py-5 flex flex-col">
+
+                {links.map((link) => (
+
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
+                  >
+
+                    {link.name}
+
+                  </Link>
+
+                ))}
+
+              </div>
+
+            </motion.div>
+
+          )}
+
+        </AnimatePresence>
+
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-
-        {menuOpen && (
-
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-blue-500/10 bg-[#050816]"
-          >
-
-            <div className="px-6 py-5 flex flex-col">
-
-              {links.map((link) => (
-
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
-                >
-
-                  {link.name}
-
-                </Link>
-
-              ))}
-
-            </div>
-
-          </motion.div>
-
-        )}
-
-      </AnimatePresence>
 
     </header>
   );
