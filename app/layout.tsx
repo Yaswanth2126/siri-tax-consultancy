@@ -25,11 +25,7 @@ export default function RootLayout({
 
         <Navbar />
 
-        <main className="pt-24">
-
-          {children}
-
-        </main>
+        {children}
 
         <WhatsAppButton />
 

@@ -22,21 +22,16 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 pt-4">
+    <header className="sticky top-0 z-50 w-full border-b border-blue-500/10 bg-[#050816]/95 backdrop-blur-xl">
 
-      <motion.nav
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className="max-w-7xl mx-auto"
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        <div className="h-16 rounded-2xl border border-blue-500/10 bg-[#050816]/70 backdrop-blur-xl shadow-[0_0_40px_rgba(37,99,235,0.12)] flex items-center justify-between px-5 lg:px-7">
+        <div className="h-20 flex items-center justify-between">
 
           {/* Logo */}
           <Link
             href="/"
-            className="text-white font-bold text-xl lg:text-2xl"
+            className="text-white font-bold text-2xl tracking-tight"
           >
 
             Siri Tax Consultancy
@@ -44,14 +39,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-8">
 
             {links.map((link) => (
 
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm text-gray-300 hover:text-blue-400 transition"
+                className="text-gray-300 hover:text-blue-400 transition duration-200 text-sm font-medium"
               >
 
                 {link.name}
@@ -65,59 +60,59 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
+            className="md:hidden w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center text-white"
           >
 
             {menuOpen ? (
-              <X size={22} />
+              <X size={24} />
             ) : (
-              <Menu size={22} />
+              <Menu size={24} />
             )}
 
           </button>
 
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
+      </div>
 
-          {menuOpen && (
+      {/* Mobile Menu */}
+      <AnimatePresence>
 
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-[#050816]/90 backdrop-blur-xl overflow-hidden"
-            >
+        {menuOpen && (
 
-              <div className="flex flex-col p-5">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t border-blue-500/10 bg-[#050816]"
+          >
 
-                {links.map((link) => (
+            <div className="px-6 py-5 flex flex-col">
 
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
-                  >
+              {links.map((link) => (
 
-                    {link.name}
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
+                >
 
-                  </Link>
+                  {link.name}
 
-                ))}
+                </Link>
 
-              </div>
+              ))}
 
-            </motion.div>
+            </div>
 
-          )}
+          </motion.div>
 
-        </AnimatePresence>
+        )}
 
-      </motion.nav>
+      </AnimatePresence>
 
-    </div>
+    </header>
   );
 }
