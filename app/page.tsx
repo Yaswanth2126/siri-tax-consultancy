@@ -358,6 +358,189 @@ export default function HomePage() {
 
       </section>
 
+  {/* WHY CHOOSE US */}
+<section className="px-6 lg:px-12 py-24">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="text-center mb-16">
+
+      <p className="text-blue-400 font-semibold tracking-widest uppercase">
+        Why Choose Us
+      </p>
+
+      <h2 className="text-5xl font-bold mt-4">
+        Trusted By Businesses
+      </h2>
+
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-8">
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          Expert Guidance
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          Professional GST and tax solutions with accurate filing support.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          Fast Processing
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          Quick registration, filing and compliance processing for businesses.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          Reliable Support
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          Dedicated customer support and professional consultation assistance.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* TESTIMONIALS */}
+<section className="px-6 lg:px-12 py-24">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="text-center mb-16">
+
+      <p className="text-blue-400 font-semibold tracking-widest uppercase">
+        Testimonials
+      </p>
+
+      <h2 className="text-5xl font-bold mt-4">
+        What Clients Say
+      </h2>
+
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-8">
+
+      <div className="rounded-3xl border border-white/5 bg-gradient-to-b from-zinc-900 to-black p-8">
+        <p className="text-gray-300 leading-relaxed">
+          “Professional and fast GST filing support. Very smooth process.”
+        </p>
+
+        <div className="mt-6">
+          <h4 className="font-bold text-lg">
+            Ravi Kumar
+          </h4>
+
+          <p className="text-gray-500">
+            Business Owner
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-gradient-to-b from-zinc-900 to-black p-8">
+        <p className="text-gray-300 leading-relaxed">
+          “Helped us with MSME registration and compliance professionally.”
+        </p>
+
+        <div className="mt-6">
+          <h4 className="font-bold text-lg">
+            Suresh Reddy
+          </h4>
+
+          <p className="text-gray-500">
+            Startup Founder
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-gradient-to-b from-zinc-900 to-black p-8">
+        <p className="text-gray-300 leading-relaxed">
+          “Best consultancy support for income tax and GST filings.”
+        </p>
+
+        <div className="mt-6">
+          <h4 className="font-bold text-lg">
+            Priya Sharma
+          </h4>
+
+          <p className="text-gray-500">
+            Entrepreneur
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* FAQ */}
+<section className="px-6 lg:px-12 py-24">
+
+  <div className="max-w-5xl mx-auto">
+
+    <div className="text-center mb-16">
+
+      <p className="text-blue-400 font-semibold tracking-widest uppercase">
+        FAQs
+      </p>
+
+      <h2 className="text-5xl font-bold mt-4">
+        Frequently Asked Questions
+      </h2>
+
+    </div>
+
+    <div className="space-y-6">
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          Who needs GST registration?
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          Businesses crossing GST turnover limits must register under GST.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          How long does MSME registration take?
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          MSME registration is usually completed within 1-2 working days.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border border-white/5 bg-zinc-900/40 p-8">
+        <h3 className="text-2xl font-bold">
+          Do you provide income tax filing?
+        </h3>
+
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          Yes, we provide professional income tax filing for individuals and businesses.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
     </main>
   );
 }
