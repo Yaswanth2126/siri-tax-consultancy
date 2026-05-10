@@ -22,16 +22,21 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-xl border-b border-zinc-800">
+    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 pt-5">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="max-w-7xl mx-auto"
+      >
 
-        <div className="h-20 flex items-center justify-between">
+        <div className="bg-black/50 backdrop-blur-2xl border border-white/10 rounded-[28px] px-6 lg:px-8 h-20 flex items-center justify-between shadow-2xl shadow-black/30">
 
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold text-white"
+            className="text-white font-bold text-2xl tracking-tight"
           >
             Siri Tax Consultancy
           </Link>
@@ -44,19 +49,21 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-400 hover:text-white transition"
+                className="text-gray-300 hover:text-white transition text-sm font-medium"
               >
+
                 {link.name}
+
               </Link>
 
             ))}
 
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex items-center justify-center w-12 h-12 rounded-xl border border-zinc-700 bg-zinc-900 text-white"
+            className="md:hidden w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white"
           >
 
             {menuOpen ? (
@@ -69,56 +76,56 @@ export default function Navbar() {
 
         </div>
 
-      </div>
+        {/* Mobile Menu */}
+        <AnimatePresence>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
+          {menuOpen && (
 
-        {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden mt-4 bg-black/70 backdrop-blur-2xl border border-white/10 rounded-[28px] overflow-hidden"
+            >
 
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-zinc-800 bg-black"
-          >
+              <div className="flex flex-col p-6">
 
-            <div className="px-6 py-6 flex flex-col gap-6">
+                {links.map((link, index) => (
 
-              {links.map((link, index) => (
-
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: index * 0.05,
-                  }}
-                >
-
-                  <Link
-                    href={link.href}
-                    className="text-lg text-gray-300 hover:text-white transition"
-                    onClick={() => setMenuOpen(false)}
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: index * 0.05,
+                    }}
                   >
 
-                    {link.name}
+                    <Link
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-4 text-gray-300 hover:text-white transition text-lg border-b border-white/5 last:border-none"
+                    >
 
-                  </Link>
+                      {link.name}
 
-                </motion.div>
+                    </Link>
 
-              ))}
+                  </motion.div>
 
-            </div>
+                ))}
 
-          </motion.div>
+              </div>
 
-        )}
+            </motion.div>
 
-      </AnimatePresence>
+          )}
 
-    </nav>
+        </AnimatePresence>
+
+      </motion.nav>
+
+    </div>
   );
 }
