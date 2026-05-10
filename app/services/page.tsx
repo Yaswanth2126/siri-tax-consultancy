@@ -13,180 +13,146 @@ import {
 
 import PageWrapper from "@/components/PageWrapper";
 
-export default function ServicesPage() {
+const services = [
+  {
+    title: "GST Filing",
+    description:
+      "Monthly, quarterly and annual GST filing services with complete compliance support.",
+    icon: FileText,
+  },
+  {
+    title: "Income Tax Filing",
+    description:
+      "Professional income tax return filing for salaried individuals and businesses.",
+    icon: Landmark,
+  },
+  {
+    title: "MSME Registration",
+    description:
+      "Fast MSME/Udyam registration with complete business assistance.",
+    icon: Building2,
+  },
+  {
+    title: "Accounting Services",
+    description:
+      "Bookkeeping, accounting and financial reporting solutions for businesses.",
+    icon: Calculator,
+  },
+  {
+    title: "Business Registration",
+    description:
+      "Company registration, startup setup and compliance guidance.",
+    icon: Briefcase,
+  },
+  {
+    title: "Tax Compliance",
+    description:
+      "Professional support for maintaining GST and Income Tax compliance.",
+    icon: ShieldCheck,
+  },
+];
 
-  const services = [
-    {
-      icon: FileText,
-      title: "GST Filing",
-      description:
-        "Monthly, quarterly and annual GST filing services with complete compliance support.",
-    },
-    {
-      icon: Landmark,
-      title: "Income Tax Filing",
-      description:
-        "Professional income tax return filing for salaried individuals and businesses.",
-    },
-    {
-      icon: Building2,
-      title: "MSME Registration",
-      description:
-        "Fast MSME/Udyam registration with complete business assistance.",
-    },
-    {
-      icon: Calculator,
-      title: "Accounting Services",
-      description:
-        "Bookkeeping, accounting and financial reporting solutions for businesses.",
-    },
-    {
-      icon: Briefcase,
-      title: "Business Registration",
-      description:
-        "Company registration, startup setup and compliance guidance.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Tax Compliance",
-      description:
-        "Professional support for maintaining GST and Income Tax compliance.",
-    },
-  ];
+export default function ServicesPage() {
 
   return (
     <PageWrapper>
 
-      {/* Hero */}
-      <section className="px-6 pt-24 pb-16">
+      <section className="min-h-screen bg-black text-white px-4 sm:px-6 pt-28 pb-20">
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
 
+          {/* Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="max-w-4xl"
+            className="text-center"
           >
 
-            <p className="text-blue-500 uppercase tracking-widest text-sm font-semibold">
-              Our Services
+            <p className="text-blue-500 uppercase tracking-[0.3em] text-sm font-semibold">
+              Professional Services
             </p>
 
-            <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
 
-              Professional Financial
-              <span className="text-blue-500"> Solutions</span>
+              Complete Tax &
+              <span className="text-blue-500"> Business Solutions</span>
 
             </h1>
 
-            <p className="mt-8 text-lg text-gray-400 leading-relaxed max-w-3xl">
+            <p className="mt-6 text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
 
-              We provide professional GST filing, Income Tax filing,
-              MSME registration and business compliance services
-              for startups, businesses and individuals across India.
+              Professional GST filing, Income Tax filing,
+              MSME registration, accounting and business
+              compliance services for businesses and individuals.
 
             </p>
 
           </motion.div>
 
-        </div>
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-20">
 
-      </section>
+            {services.map((service, index) => {
 
-      {/* Services Grid */}
-      <section className="px-6 py-12">
+              const Icon = service.icon;
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+              return (
 
-          {services.map((service, index) => {
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.35,
+                    delay: index * 0.05,
+                  }}
+                  className="group bg-gradient-to-b from-zinc-900 to-black border border-zinc-800 rounded-[32px] p-8 hover:border-blue-500/40 transition-all duration-300"
+                >
 
-            const Icon = service.icon;
+                  {/* Icon */}
+                  <div className="w-20 h-20 rounded-3xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center">
 
-            return (
+                    <Icon
+                      size={36}
+                      className="text-blue-500"
+                    />
 
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.35,
-                  delay: index * 0.06,
-                }}
-                viewport={{ once: true }}
-                whileHover={{
-                  scale: 1.02,
-                }}
-                className="group relative overflow-hidden bg-zinc-900/60 backdrop-blur-xl border border-zinc-800 rounded-[36px] p-8 transition"
-              >
+                  </div>
 
-                {/* Hover Glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-blue-500/5"></div>
+                  {/* Title */}
+                  <h2 className="mt-8 text-3xl font-bold leading-tight">
 
-                {/* Icon */}
-                <div className="relative w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8">
+                    {service.title}
 
-                  <Icon className="text-blue-500 w-8 h-8" />
+                  </h2>
 
-                </div>
+                  {/* Description */}
+                  <p className="mt-5 text-gray-400 leading-relaxed text-lg">
 
-                {/* Title */}
-                <h2 className="relative text-2xl font-bold">
-                  {service.title}
-                </h2>
+                    {service.description}
 
-                {/* Description */}
-                <p className="relative mt-5 text-gray-400 leading-relaxed">
+                  </p>
 
-                  {service.description}
+                  {/* Button */}
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center mt-10 border border-zinc-700 hover:border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 transition rounded-2xl px-6 py-3 text-sm font-medium"
+                  >
 
-                </p>
+                    Learn More
 
-                {/* Button */}
-                <button className="relative mt-8 border border-zinc-700 hover:border-blue-500 px-5 py-3 rounded-2xl transition text-sm font-semibold">
+                  </a>
 
-                  Learn More
+                </motion.div>
 
-                </button>
+              );
+            })}
 
-              </motion.div>
-
-            );
-
-          })}
+          </div>
 
         </div>
-
-      </section>
-
-      {/* CTA */}
-      <section className="px-6 py-20">
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-          className="max-w-6xl mx-auto rounded-[40px] border border-zinc-800 bg-gradient-to-r from-zinc-900/90 to-blue-950/70 backdrop-blur-xl p-14 md:p-20 text-center"
-        >
-
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            Need Professional Tax Assistance?
-          </h2>
-
-          <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-            Connect with Siri Tax Consultancy for trusted financial and compliance solutions.
-          </p>
-
-          <a
-            href="https://wa.me/918977756656"
-            target="_blank"
-            className="inline-block mt-10 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-semibold transition shadow-lg shadow-blue-500/20"
-          >
-            Contact On WhatsApp
-          </a>
-
-        </motion.div>
 
       </section>
 
