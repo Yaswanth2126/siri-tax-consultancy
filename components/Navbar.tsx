@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
@@ -18,12 +19,13 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#050816]/95 backdrop-blur-xl">
+    <header className="absolute top-0 left-0 w-full z-50">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+      <div className="max-w-7xl mx-auto px-6 pt-6">
 
-        <div className="h-16 rounded-2xl bg-gradient-to-r from-[#0a1020] to-[#121a33] border border-blue-500/10 shadow-lg shadow-blue-500/5 px-6 flex items-center justify-between">
+        <div className="h-16 rounded-2xl bg-black/30 backdrop-blur-2xl border border-blue-500/10 shadow-[0_0_40px_rgba(37,99,235,0.08)] px-6 flex items-center justify-between">
 
+          {/* Logo */}
           <Link
             href="/"
             className="text-white font-bold text-2xl tracking-tight"
@@ -31,9 +33,11 @@ export default function Navbar() {
             Siri Tax Consultancy
           </Link>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
 
             {links.map((link) => (
+
               <Link
                 key={link.name}
                 href={link.href}
@@ -41,10 +45,12 @@ export default function Navbar() {
               >
                 {link.name}
               </Link>
+
             ))}
 
           </div>
 
+          {/* Mobile Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/10 flex items-center justify-center text-white"
@@ -56,6 +62,7 @@ export default function Navbar() {
 
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
 
           {menuOpen && (
@@ -65,20 +72,24 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-[#0a1020]/95 backdrop-blur-xl overflow-hidden"
+              className="md:hidden mt-3 rounded-2xl border border-blue-500/10 bg-black/60 backdrop-blur-2xl overflow-hidden"
             >
 
               <div className="px-6 py-5 flex flex-col">
 
                 {links.map((link) => (
+
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className="py-4 text-gray-300 hover:text-blue-400 transition border-b border-white/5 last:border-none"
                   >
+
                     {link.name}
+
                   </Link>
+
                 ))}
 
               </div>
