@@ -1,22 +1,51 @@
 "use client";
 
 import Link from "next/link";
-
 import { motion } from "framer-motion";
+import {
+  Calculator,
+  FileText,
+  ShieldCheck,
+  Briefcase,
+} from "lucide-react";
 
 export default function HomePage() {
 
+  const services = [
+    {
+      title: "GST Filing",
+      desc: "Monthly, quarterly and annual GST filing services.",
+      icon: <FileText size={28} />,
+    },
+    {
+      title: "Income Tax",
+      desc: "Professional income tax return filing support.",
+      icon: <Calculator size={28} />,
+    },
+    {
+      title: "MSME Registration",
+      desc: "Fast MSME/Udyam registration assistance.",
+      icon: <Briefcase size={28} />,
+    },
+    {
+      title: "Tax Compliance",
+      desc: "Complete GST and compliance management.",
+      icon: <ShieldCheck size={28} />,
+    },
+  ];
+
   return (
+
     <main className="min-h-screen bg-black text-white overflow-hidden">
 
-      {/* Hero Section */}
+      {/* HERO */}
       <section className="relative px-6 lg:px-12 pt-32 pb-24">
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.18),transparent_45%)]" />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center relative z-10">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
-          {/* Left */}
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,12 +72,11 @@ export default function HomePage() {
             <p className="mt-7 text-gray-400 text-xl leading-relaxed max-w-2xl">
 
               Premium GST filing, Income Tax filing,
-              MSME registration and modern business
-              compliance solutions for businesses across India.
+              MSME registration and business compliance
+              solutions for businesses across India.
 
             </p>
 
-            {/* Buttons */}
             <div className="flex flex-wrap gap-5 mt-10">
 
               <Link
@@ -71,7 +99,7 @@ export default function HomePage() {
 
             </div>
 
-            {/* Stats */}
+            {/* STATS */}
             <div className="flex gap-14 mt-16 flex-wrap">
 
               <div>
@@ -126,7 +154,7 @@ export default function HomePage() {
 
           </motion.div>
 
-          {/* Right Card */}
+          {/* RIGHT CARD */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             animate={{ opacity: 1, x: 0 }}
@@ -234,6 +262,97 @@ export default function HomePage() {
             </div>
 
           </motion.div>
+
+        </div>
+
+      </section>
+
+      {/* SERVICES */}
+      <section className="px-6 lg:px-12 py-24">
+
+        <div className="max-w-7xl mx-auto">
+
+          <div className="text-center mb-16">
+
+            <p className="text-blue-400 font-semibold tracking-widest uppercase">
+
+              Services
+
+            </p>
+
+            <h2 className="text-5xl font-bold mt-4">
+
+              Professional Tax Solutions
+
+            </h2>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            {services.map((service, index) => (
+
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="rounded-3xl border border-white/5 bg-gradient-to-b from-zinc-900 to-black p-8"
+              >
+
+                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+
+                  {service.icon}
+
+                </div>
+
+                <h3 className="text-2xl font-bold mt-6">
+
+                  {service.title}
+
+                </h3>
+
+                <p className="text-gray-400 mt-4 leading-relaxed">
+
+                  {service.desc}
+
+                </p>
+
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 lg:px-12 pb-28">
+
+        <div className="max-w-6xl mx-auto rounded-[40px] border border-blue-500/10 bg-gradient-to-r from-blue-600/20 to-black p-12 text-center">
+
+          <h2 className="text-5xl font-bold">
+
+            Need Professional Tax Assistance?
+
+          </h2>
+
+          <p className="text-gray-300 text-xl mt-6 max-w-3xl mx-auto">
+
+            Get expert GST filing, Income Tax filing,
+            MSME registration and compliance support
+            from experienced professionals.
+
+          </p>
+
+          <Link
+            href="/contact"
+            className="inline-flex mt-10 px-10 py-5 rounded-2xl bg-blue-600 hover:bg-blue-500 transition font-semibold text-lg"
+          >
+
+            Contact Now
+
+          </Link>
 
         </div>
 
