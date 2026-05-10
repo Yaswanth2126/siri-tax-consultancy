@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Image from "next/image";
+import Link from "next/link";
 
 import { Menu, X } from "lucide-react";
 
@@ -22,121 +22,102 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-xl border-b border-zinc-800">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 md:pt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        <div className="flex items-center justify-between px-5 sm:px-8 py-4 rounded-3xl bg-zinc-900/50 backdrop-blur-2xl border border-zinc-800/50 shadow-xl">
+        <div className="h-20 flex items-center justify-between">
 
           {/* Logo */}
-          <a
+          <Link
             href="/"
-            className="flex items-center gap-3"
+            className="text-2xl font-bold text-white"
           >
-
-            <Image
-              src="/logo.png"
-              alt="Siri Tax Consultancy"
-              width={42}
-              height={42}
-              className="rounded-xl"
-            />
-
-            <div>
-
-              <h1 className="text-lg sm:text-xl font-bold text-white leading-none">
-                Siri Tax
-              </h1>
-
-              <p className="text-xs text-gray-400 mt-1">
-                Consultancy
-              </p>
-
-            </div>
-
-          </a>
+            Siri Tax Consultancy
+          </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
+          <div className="hidden md:flex items-center gap-8">
 
             {links.map((link) => (
 
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="hover:text-white transition"
+                className="text-gray-400 hover:text-white transition"
               >
                 {link.name}
-              </a>
+              </Link>
 
             ))}
 
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white"
+            className="md:hidden flex items-center justify-center w-12 h-12 rounded-xl border border-zinc-700 bg-zinc-900 text-white"
           >
 
             {menuOpen ? (
-              <X className="w-7 h-7" />
+              <X size={28} />
             ) : (
-              <Menu className="w-7 h-7" />
+              <Menu size={28} />
             )}
 
           </button>
 
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-
-          {menuOpen && (
-
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden mt-4"
-            >
-
-              <div className="rounded-3xl bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800/50 p-6 shadow-2xl">
-
-                <div className="flex flex-col gap-5">
-
-                  {links.map((link, index) => (
-
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: index * 0.05,
-                      }}
-                      className="text-gray-300 hover:text-white transition text-base"
-                      onClick={() => setMenuOpen(false)}
-                    >
-
-                      {link.name}
-
-                    </motion.a>
-
-                  ))}
-
-                </div>
-
-              </div>
-
-            </motion.div>
-
-          )}
-
-        </AnimatePresence>
-
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+
+        {menuOpen && (
+
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t border-zinc-800 bg-black"
+          >
+
+            <div className="px-6 py-6 flex flex-col gap-6">
+
+              {links.map((link, index) => (
+
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: index * 0.05,
+                  }}
+                >
+
+                  <Link
+                    href={link.href}
+                    className="text-lg text-gray-300 hover:text-white transition"
+                    onClick={() => setMenuOpen(false)}
+                  >
+
+                    {link.name}
+
+                  </Link>
+
+                </motion.div>
+
+              ))}
+
+            </div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
 
     </nav>
   );
